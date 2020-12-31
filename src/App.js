@@ -58,7 +58,7 @@ function App() {
 
   return (
     <div className="App">
-      <h1>My Todos App</h1>
+      <h1>Image Analyzer</h1>
       <input
         onChange={e => setFormData({ ...formData, 'name': e.target.value})}
         placeholder="Todo name"
@@ -69,8 +69,15 @@ function App() {
         placeholder="Todo description"
         value={formData.description}
       />
+      <ImageUploader
+         withIcon={true}
+         buttonText='Choose images'
+         onChange={this.onDrop}
+         imgExtension={['.jpg', '.gif', '.png', '.gif']}
+         maxFileSize={5242880}
+      />
 
-      <button onClick={createTodo}>Create Todo</button>
+      <button onClick={createTodo}>Bild hochladen</button>
       <div style={{marginBottom: 30}}>
         {
           todos.map(todo => (
