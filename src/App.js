@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import ImageUploader from 'react-images-upload';
+//import ImageUploader from 'react-images-upload';
 import './App.css';
 import { API } from 'aws-amplify';
 import { withAuthenticator, AmplifySignOut } from '@aws-amplify/ui-react';
@@ -69,13 +69,7 @@ function App() {
         placeholder="Todo description"
         value={formData.description}
       />
-      <ImageUploader
-                      withIcon={true}
-                      buttonText='Choose images'
-                      onChange={this.onDrop}
-                      imgExtension={['.jpg', '.gif', '.png', '.gif']}
-                      maxFileSize={5242880}
-                  />
+
       <button onClick={createTodo}>Create Todo</button>
       <div style={{marginBottom: 30}}>
         {
