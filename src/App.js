@@ -9,6 +9,32 @@ import { Storage } from 'aws-amplify';
 
 const initialFormState = { name: '', description: '' }
 
+class App extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = { pictures: [] };
+        this.onDrop = this.onDrop.bind(this);
+    }
+    onDrop(pictureFiles, pictureDataURLs) {
+        this.setState({
+            pictures: pictureFiles
+        });
+    }
+    render() {
+        return (
+            <ImageUploader
+                withIcon={true}
+                buttonText='Choose images'
+                onChange={this.onDrop}
+                imgExtension={['.jpg', '.gif', '.png', '.gif']}
+                maxFileSize={5242880}
+            />
+        );
+    }
+}`
+}
+
+
 function App() {
   const [todos, setTodos] = useState([]);
   const [formData, setFormData] = useState(initialFormState);
@@ -59,7 +85,8 @@ function App() {
   return (
     <div className="App">
       <h1>Image Analyzer</h1>
-      <Uploader/>
+      <ImageUploader style={{ maxWidth: '500px', margin: "20px auto" }}
+                               withPreview={true} />
 
       <div style={{marginBottom: 30}}>
         {
