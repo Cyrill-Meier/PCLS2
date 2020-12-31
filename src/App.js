@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-//import ImageUploader from 'react-images-upload';
+import ImageUploader from 'react-images-upload';
 import './App.css';
 import { API } from 'aws-amplify';
 import { withAuthenticator, AmplifySignOut } from '@aws-amplify/ui-react';
