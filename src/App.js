@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import ImageUploader from 'react-images-upload';
+import './components/Uploader.js';
 import './App.css';
 import { API } from 'aws-amplify';
 import { withAuthenticator, AmplifySignOut } from '@aws-amplify/ui-react';
@@ -59,25 +59,8 @@ function App() {
   return (
     <div className="App">
       <h1>Image Analyzer</h1>
-      <input
-        onChange={e => setFormData({ ...formData, 'name': e.target.value})}
-        placeholder="Todo name"
-        value={formData.name}
-      />
-      <input
-        onChange={e => setFormData({ ...formData, 'description': e.target.value})}
-        placeholder="Todo description"
-        value={formData.description}
-      />
-      <ImageUploader
-         withIcon={true}
-         buttonText='Choose images'
-         onChange={this.onDrop}
-         imgExtension={['.jpg', '.gif', '.png', '.gif']}
-         maxFileSize={5242880}
-      />
+      <Uploader/>
 
-      <button onClick={createTodo}>Bild hochladen</button>
       <div style={{marginBottom: 30}}>
         {
           todos.map(todo => (
