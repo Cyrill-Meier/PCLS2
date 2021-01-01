@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import './components/Uploader.js';
 import './App.css';
 import { API } from 'aws-amplify';
 import { withAuthenticator, AmplifySignOut } from '@aws-amplify/ui-react';
@@ -8,31 +7,6 @@ import { createTodo as createTodoMutation, deleteTodo as deleteTodoMutation } fr
 import { Storage } from 'aws-amplify';
 
 const initialFormState = { name: '', description: '' }
-
-class App extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = { pictures: [] };
-        this.onDrop = this.onDrop.bind(this);
-    }
-    onDrop(pictureFiles, pictureDataURLs) {
-        this.setState({
-            pictures: pictureFiles
-        });
-    }
-    render() {
-        return (
-            <ImageUploader
-                withIcon={true}
-                buttonText='Choose images'
-                onChange={this.onDrop}
-                imgExtension={['.jpg', '.gif', '.png', '.gif']}
-                maxFileSize={5242880}
-            />
-        );
-    }
-}
-
 
 function App() {
   const [todos, setTodos] = useState([]);
@@ -83,10 +57,22 @@ function App() {
 
   return (
     <div className="App">
-      <h1>Image Analyzer</h1>
-      <ImageUploader style={{ maxWidth: '500px', margin: "20px auto" }}
-                               withPreview={true} />
-
+      <h1>My Todos App</h1>
+      <input
+        onChange={e => setFormData({ ...formData, 'name': e.target.value})}
+        placeholder="Todo name"
+        value={formData.name}
+      />
+      <input
+        onChange={e => setFormData({ ...formData, 'description': e.target.value})}
+        placeholder="Todo description"
+        value={formData.description}
+      />
+      <input
+        type="file"
+        onChange={onChange}
+      />
+      <button onClick={createTodo}>Create Todo</button>
       <div style={{marginBottom: 30}}>
         {
           todos.map(todo => (
