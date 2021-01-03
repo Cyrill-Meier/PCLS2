@@ -5,6 +5,8 @@ import { withAuthenticator, AmplifySignOut } from '@aws-amplify/ui-react';
 import { listTodos } from './graphql/queries';
 import { createTodo as createTodoMutation, deleteTodo as deleteTodoMutation } from './graphql/mutations';
 import { Storage } from 'aws-amplify';
+import * as ReactBootStrap from 'react-bootstrap';
+
 
 const initialFormState = { name: '', description: '' }
 
@@ -57,22 +59,35 @@ function App() {
 
   return (
     <div className="App">
-      <h1>My Todos App</h1>
-      <input
-        onChange={e => setFormData({ ...formData, 'name': e.target.value})}
-        placeholder="Todo name"
-        value={formData.name}
-      />
-      <input
-        onChange={e => setFormData({ ...formData, 'description': e.target.value})}
-        placeholder="Todo description"
-        value={formData.description}
-      />
-      <input
-        type="file"
-        onChange={onChange}
-      />
-      <button onClick={createTodo}>Create Todo</button>
+      <ReactBootStrap.Navbar bg="primary" variant="dark">
+        <ReactBootStrap.Navbar.Brand href="#home">FHNW PCLS Usecase</ReactBootStrap.Navbar.Brand>
+        <ReactBootStrap.Nav className="mr-auto">
+        </ReactBootStrap.Nav>
+        <ReactBootStrap.Form inline>
+          <ReactBootStrap.Button variant="outline-light"><AmplifySignOut /></ReactBootStrap.Button>
+        </ReactBootStrap.Form>
+      </ReactBootStrap.Navbar>
+      <hr></hr>
+      <h1>Teile dein Bilder</h1>
+
+        <input
+          onChange={e => setFormData({ ...formData, 'name': e.target.value})}
+          placeholder="Titel"
+          value={formData.name}
+        />
+        <input
+          onChange={e => setFormData({ ...formData, 'description': e.target.value})}
+          placeholder="Beschreibung"
+          value={formData.description}
+        />
+        <input
+          type="file"
+          onChange={onChange}
+        />
+        <ReactBootStrap.Button onClick={createTodo}>Veröffentlichen</ReactBootStrap.Button>
+
+      <hr></hr>
+
       <div style={{marginBottom: 30}}>
         {
           todos.map(todo => (
@@ -81,13 +96,13 @@ function App() {
               <p>{todo.description}</p>
               <button onClick={() => deleteTodo(todo)}>Delete todo</button>
               {
-                todo.image && <img src={todo.image} style={{width: 400}} />
+                todo.image && <img src={todo.image} style={{width: 400}}  alt="Uploaded from the user"/>
               }
             </div>
           ))
         }
       </div>
-      <AmplifySignOut />
+
     </div>
   );
 }
