@@ -68,7 +68,7 @@ function App() {
         </ReactBootStrap.Form>
       </ReactBootStrap.Navbar>
       <hr></hr>
-      <h1>Teile dein Bilder</h1>
+      <h1>Teile deine Bilder</h1>
 
         <input
           onChange={e => setFormData({ ...formData, 'name': e.target.value})}
