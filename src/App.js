@@ -94,11 +94,13 @@ function App() {
             <div key={todo.id || todo.name}>
               <h2>{todo.name}</h2>
               <p>{todo.description}</p>
-              <button onClick={() => deleteTodo(todo)}>Delete todo</button>
+
               {
                 todo.image && <img src={todo.image} style={{width: 400}}  alt="Uploaded from the user"/>
               }
+              <button onClick={() => deleteTodo(todo)}>Bild löschen</button>
             </div>
+
           ))
         }
       </div>
