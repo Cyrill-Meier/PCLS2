@@ -60,7 +60,7 @@ function App() {
   return (
     <div className="App">
       <ReactBootStrap.Navbar bg="primary" variant="dark">
-        <ReactBootStrap.Navbar.Brand href="#home">FHNW PCLS Usecase</ReactBootStrap.Navbar.Brand>
+        <ReactBootStrap.Navbar.Brand href="#home">FHNW PCLS CaseStudy</ReactBootStrap.Navbar.Brand>
         <ReactBootStrap.Nav className="mr-auto">
         </ReactBootStrap.Nav>
         <ReactBootStrap.Form inline>
